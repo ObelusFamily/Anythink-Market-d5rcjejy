@@ -153,7 +153,6 @@ router.post("/", auth.required, function (req, res, next) {
       }
 
       var item = new Item(req.body.item);
-      console.log(item.image);
 
       if (item.image === "") {
         response = await openai.createImage({
