@@ -154,14 +154,13 @@ router.post("/", auth.required, function (req, res, next) {
 
       var item = new Item(req.body.item);
 
-      if (req.body.item.image === "") {
-        response = await openai.createImage({
-          prompt: req.body.item.title,
+      if (!item?.image) {
+        const imageGenerated = await openai.createImage({
+          prompt: item.title,
           n: 1,
           size: "256x256",
         });
-        item.image = response.data.data[0].url;
-        req.body.item.image = response.data.data[0].url;
+        item.image = imageGenerated.data.data[0].url;
       }
 
       item.seller = user;
