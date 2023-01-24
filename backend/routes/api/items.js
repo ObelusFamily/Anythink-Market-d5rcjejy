@@ -161,6 +161,7 @@ router.post("/", auth.required, function (req, res, next) {
           size: "256x256",
         });
         item.image = response.data.data[0].url;
+        req.body.item.image = response.data.data[0].url;
       }
 
       item.seller = user;
