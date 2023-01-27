@@ -14,7 +14,6 @@ var isProduction = process.env.NODE_ENV === "production";
 
 // Create global app object
 var app = express();
-require('newrelic');
 
 app.use(cors());
 
